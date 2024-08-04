@@ -14,8 +14,10 @@ class Lesson extends Model
         'course_id',
         'price'
     ];
-    public function Courses ()
+
+    public function courses()
     {
         return $this->belongsTo(Course::class);
     }
+
 }
