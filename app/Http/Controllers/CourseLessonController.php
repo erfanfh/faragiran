@@ -1,12 +1,11 @@
 <?php
 
-// app/Http/Controllers/LessonController.php
 namespace App\Http\Controllers;
 
 use App\Models\Lesson;
 use Illuminate\Http\Request;
 
-class LessonController
+class CourseLessonController
 {
     public function store(Request $request)
     {

@@ -11,13 +11,16 @@ class Course extends Model
 
     protected $fillable = [
         'name',
-        'course_id',
-        'price'
     ];
 
     public function lessons()
     {
         return $this->hasMany(Lesson::class);
+    }
+
+    public function price()
+    {
+        return $this->morphOne(Price::class, 'priceable');
     }
 
 }
