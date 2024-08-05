@@ -53,24 +53,46 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Update a Course
 
-- **URL:** `/courses/{id}`
+- **URL:** `/api/courses/1`
 - **Method:** `PUT`
-- **Body (raw, JSON):**
+- **Request Body:**
     ```json
     {
       "price": 100
     }
     ```
+ - **Response Body:**
+    ```json
+    {
+      "data": {
+        "course": {
+          "price": 452
+        },
+        "message": "Course updated successfully"
+      }
+    }
+    ```
 
 ### Create a Lesson
 
-- **URL:** `/lessons`
+- **URL:** `/api/courses/1`
 - **Method:** `POST`
-- **Body (raw, JSON):**
+- **Request Body:**
     ```json
     {
-      "name": "Lesson Name",
-      "course_id": 1,
-      "price": 100.00
+    	"name" : "Lesson name",
+    	"price" : 500
+    }
+    ```
+- **Response Body:**
+    ```json
+    {
+      "data": {
+        "lesson": {
+          "name": "Lesson name",
+          "price": 500
+        },
+        "message": "Lesson created successfully"
+      }
     }
     ```
