@@ -2,24 +2,26 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CourseUpdateRequest;
+use App\Http\Resources\CourseResource;
 use App\Models\Course;
 use Illuminate\Http\Request;
 
 class CourseController
 {
-    public function update(Request $request, Course $course)
+    /**
+     * use this method for update a course price
+     */
+    public function update(CourseUpdateRequest $request, string $course)
     {
 
-        $request->validate([
-            'price' => 'required'
+        $course = Course::findOrFail($course);
+
+        $course->price()->update([
+            'amount' => $request->input('price')
         ]);
 
-        $course->update($request->all());
-
-        return response()->json([
-            'course' => $course,
-            'message' => 'Course updated successfully'
-        ]);
+        return new CourseResource($course);
 
     }
 }

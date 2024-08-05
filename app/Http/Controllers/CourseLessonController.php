@@ -2,26 +2,33 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\LessonStoreRequest;
+use App\Http\Resources\LessonResource;
 use App\Models\Lesson;
+use App\Models\Course;
+use App\Models\Price;
 use Illuminate\Http\Request;
 
 class CourseLessonController
 {
-    public function store(Request $request)
+    /**
+     * use this method for create a new lesson for an existing course
+     */
+    public function store(LessonStoreRequest $request, string  $course)
     {
 
-        $request->validate([
-            'name' => 'required',
-            'course_id' => 'required|exists:courses,id',
-            'price' => 'required',
+        Course::findOrFail($course);
+
+        $lesson = Lesson::create([
+            'name' => $request->input('name'),
+            'course_id' => $course,
         ]);
 
-        $lesson = Lesson::create($request->all());
-
-        return response()->json([
-            'lesson' => $lesson,
-            'message' => 'Lesson created successfully'
+        $price = $lesson->price()->create([
+            'amount' => $request->input('price'),
         ]);
+
+        return new LessonResource($lesson);
 
     }
 }

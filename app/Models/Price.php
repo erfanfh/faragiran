@@ -9,6 +9,8 @@ class Price extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['amount'];
+
     public function priceable()
     {
         return $this->morphTo();
