@@ -22,8 +22,8 @@ class LessonStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|max:255',
-            'price' => 'required|numeric|min:1',
+            'name' => 'required|max:100',
+            'price' => 'required|numeric|min:1|max:16777215',
         ];
     }
 }
