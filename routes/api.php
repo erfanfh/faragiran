@@ -10,5 +10,5 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:sanctum');
 
 
-Route::post('/courses/{course}', [CourseLessonController::class, 'store']);
-Route::put('/courses/{course}', [CourseController::class, 'update']);
+Route::post('/courses/{course}/lessons', CourseLessonController::class);
+Route::put('/courses/{course}', CourseController::class);
