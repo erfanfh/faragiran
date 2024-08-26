@@ -19,11 +19,7 @@ class LessonResource extends JsonResource
             'id' => $resource->id,
             'name' => $resource->name,
             'price' => new PriceResource($resource->price),
-            "course" => [
-                'id' => $resource->course->id,
-                'name' => $resource->course->name,
-                'price' => $resource->course->price->amount,
-            ]
+            'course' => new CourseResource($resource->course),
         ]);
     }
 }
