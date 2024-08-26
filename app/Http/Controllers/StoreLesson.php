@@ -7,7 +7,7 @@ use App\Http\Resources\LessonResource;
 use App\Models\Course;
 use App\Models\Lesson;
 
-class CourseLessonController
+class StoreLesson
 {
     /**
      * use this method for create a new lesson for an existing course

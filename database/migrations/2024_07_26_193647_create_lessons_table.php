@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name', 100);
             $table->unsignedBigInteger('course_id');
-            $table->foreign('course_id')->references('id')->on('courses');
+            $table->foreignId('course_id')->constrained()->onUpdate('cascade');
             $table->timestamps();
         });
     }
